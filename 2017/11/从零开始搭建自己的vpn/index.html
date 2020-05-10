@@ -1,415 +1,194 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 
 
 
-  
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-  <meta name="google-site-verification" content="IacaOaNj-eMO9nVlrfcvUg6HXNHKkIgZR8GKHslqjFA" />
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="licheeee.github.io">
+  <meta name="author" content="Licheeee">
+  <meta name="keywords" content="">
+  <title>从零开始搭建自己的vpn - Licheeee的小屋</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
 
 
 
+<link  rel="stylesheet" href="/css/main.css" />
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
+<!-- 自定义样式保持在最底部 -->
 
 
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="web,vpn,ss," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
-
-
-
-
-
-
-<meta name="description" content="从零开始搭建自己的vpn，主要是为了不需要在寻找或者购买各种自己也不确定的vpn的服务，更加稳定，也更加放心。写下这个教程也是为了自己以后搭建方便。    第一步，购买一个国外的vps第一步，需要我们购买一个国外的vps，通常价格在每月$5，也有部分服务商提供每月$2.5的vps，不过比较少，需要自己去找一找。当然，如果你是一名大学生，或者拥有一个edu的邮箱，那么可以通过GitHub的学生验证获">
-<meta name="keywords" content="web,vpn,ss">
-<meta property="og:type" content="article">
-<meta property="og:title" content="从零开始搭建自己的vpn">
-<meta property="og:url" content="http://licheeee.github.io/2017/11/从零开始搭建自己的vpn/index.html">
-<meta property="og:site_name" content="Licheeee的小屋">
-<meta property="og:description" content="从零开始搭建自己的vpn，主要是为了不需要在寻找或者购买各种自己也不确定的vpn的服务，更加稳定，也更加放心。写下这个教程也是为了自己以后搭建方便。    第一步，购买一个国外的vps第一步，需要我们购买一个国外的vps，通常价格在每月$5，也有部分服务商提供每月$2.5的vps，不过比较少，需要自己去找一找。当然，如果你是一名大学生，或者拥有一个edu的邮箱，那么可以通过GitHub的学生验证获">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-09T13:02:13.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从零开始搭建自己的vpn">
-<meta name="twitter:description" content="从零开始搭建自己的vpn，主要是为了不需要在寻找或者购买各种自己也不确定的vpn的服务，更加稳定，也更加放心。写下这个教程也是为了自己以后搭建方便。    第一步，购买一个国外的vps第一步，需要我们购买一个国外的vps，通常价格在每月$5，也有部分服务商提供每月$2.5的vps，不过比较少，需要自己去找一找。当然，如果你是一名大学生，或者拥有一个edu的邮箱，那么可以通过GitHub的学生验证获">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://licheeee.github.io/2017/11/从零开始搭建自己的vpn/"/>
-
-
-
-
-
-  <title> 从零开始搭建自己的vpn | Licheeee的小屋 </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Licheeee的小屋</strong>&nbsp;</a>
 
-
-
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-108449861-1', 'auto');
-  ga('send', 'pageview');
-</script>
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?b3aa588569c89bae7d8f1fd5465b8fdb";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Licheeee的小屋</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle">Love you three thousand.</p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
     </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
   </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
 </nav>
 
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://licheeee.github.io/2017/11/从零开始搭建自己的vpn/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Licheeee">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Licheeee的小屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                从零开始搭建自己的vpn
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T14:58:44+08:00">
-                2017-11-13
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-09T21:02:13+08:00">
-                2019-06-09
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
               
             </span>
-          
 
-          
             
-          
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2017-11-13 14:58">
+                    2017年11月13日 下午
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    1.7k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    20
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
 
           
-          
-             <span id="/2017/11/从零开始搭建自己的vpn/" class="leancloud_visitors" data-flag-title="从零开始搭建自己的vpn">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
+      </div>
+    </div>
+  </header>
+
+  <main>
     
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
-      
-        <p>从零开始搭建自己的vpn，主要是为了不需要在寻找或者购买各种自己也不确定的vpn的服务，更加稳定，也更加放心。<br>写下这个教程也是为了自己以后搭建方便。   </p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>从零开始搭建自己的vpn，主要是为了不需要在寻找或者购买各种自己也不确定的vpn的服务，更加稳定，也更加放心。<br>写下这个教程也是为了自己以后搭建方便。   </p>
 <h1 id="第一步，购买一个国外的vps"><a href="#第一步，购买一个国外的vps" class="headerlink" title="第一步，购买一个国外的vps"></a>第一步，购买一个国外的vps</h1><p>第一步，需要我们购买一个国外的vps，通常价格在每月$5，也有部分服务商提供每月$2.5的vps，不过比较少，需要自己去找一找。<br>当然，如果你是一名大学生，或者拥有一个edu的邮箱，那么可以通过GitHub的学生验证获得digitalocean的$50的代金券，相当于可以免费使用10个月了。<br>在这里，以digitalocean为例，其他服务商过程应该类似。<br>从我的<a href="http://www.digitalocean.com/?refcode=6c595295013a" target="_blank" rel="external">digitalocean推广链接</a>注册，可以额外获得$10的代金券，当然我也会。在打开的页面中输入邮箱和密码，点击create an account即可。<br>在注册账号之后，需要填写一些个人信息。对于我们来说，最主要的里面有一项是需要进行付款方式的填写，有两个选择，信用卡或者PayPal，注意，储蓄卡应该是不可以的。我是申请了一张信用卡用来做国外的各种身份验证的，对于没有信用卡的同学来说可能需要注册PayPal。由于暂时我也没有注册过，暂且不表。<br>注册完成登陆之后，点击右上角自己头像–settings–billing，在里面有一项“Promo code”，将自己通过GitHub获得的代码粘贴进去，点击apply code即可。刷新就应该可以看到自己的“Your credit”编程$50，我们就可以正式开始vps的购买。<br>点击右上角绿色按钮create–Droplets，进入购买页面：</p>
 <blockquote>
 <p>Choose an image:我选择的是Debian 8.9 x64，如果你对其他的系统比较熟悉的话也可以选择其他的操作系统<br>Choose a size:选择第一个$5/mo的就可以了，如果需要增加需求的话可以后续添加<br>Choose a datacenter region:你可以通过<a href="http://speedtest-sfo1.digitalocean.com/" target="_blank" rel="external">测速</a>来测试到各个机房的连接速度，一般选择洛杉矶或者纽约就可以，新加坡的线路好像绕的挺远的虽然我用的就是新加坡QAQ<br>其余的选项跳过就可以，如果你自己知道需要什么的话可以自己继续添加。<br>等待系统安装完毕后，digitalocean会有一封邮件发送到你的邮箱，里面包含了root账号的密码，以及ip等信息。 </p>
 <p>2018.1.17更新：digitalocean的套餐已经更新，5刀套餐升级内存为1GB，ssd升级为25GB。依然可以从我上面的推广链接中进入。</p>
 </blockquote>
-<h1 id="第二步，搭建ss服务"><a href="#第二步，搭建ss服务" class="headerlink" title="第二步，搭建ss服务"></a>第二步，搭建ss服务</h1><p>有了vps的账号密码后，就可以登陆vps命令行进行操作了。<br>如果你使用的是Windows，可以使用xshell登陆，或者如果你使用的是Windows10的话可以开启Linux子系统使用ssh登陆：<code>ssh root@xxx.xxx.xxx.xxx</code>然后输入密码回车即可。<br>如果你使用的是macOS，同样可以开启终端使用ssh登陆，指令同上。<br>如果登陆成功，命令行前面应该变成root@xxxx等类似的样子。第一次登陆，输入<code>passwd</code>修改登陆密码，注意，Linux系统输入密码是不会回显任何字符的，你只需要输入回车即可，成功的话会有提示的。<br>接下来，我们正式进入ss服务的搭建。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install python-pip</div><div class="line">pip install shadowsocks</div></pre></td></tr></table></figure></p>
-<p>这样ss服务器已经安装在我们的vps上，接下来我们需要进行一些配置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/shadowsocks.json</div></pre></td></tr></table></figure></p>
-<p>进行配置文件的填写。不知为何在digitalocean的vps上vim与vi的命令相同，使用vi可以稍微百度下看看如何使用，如果完全不出错的话可以按下面命令执行。“#”后面的注释不写。<br>按<code>i</code>进入vi编辑模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;server&quot;:&quot;服务器ip&quot;,               #我们的服务器ip，假设为1.2.3.4</div><div class="line">    &quot;server_port&quot;:端口,                #端口号可以自定义，比如4567</div><div class="line">    &quot;local_address&quot;:&quot;127.0.0.1&quot;,</div><div class="line">    &quot;local_port&quot;:1080,</div><div class="line">    &quot;password&quot;:&quot;连接密码&quot;,</div><div class="line">    &quot;timeout&quot;:300,</div><div class="line">    &quot;method&quot;:&quot;aes-256-cfb&quot;,</div><div class="line">    &quot;fast_open&quot;:false                 #其余均可保持不变</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="第二步，搭建ss服务"><a href="#第二步，搭建ss服务" class="headerlink" title="第二步，搭建ss服务"></a>第二步，搭建ss服务</h1><p>有了vps的账号密码后，就可以登陆vps命令行进行操作了。<br>如果你使用的是Windows，可以使用xshell登陆，或者如果你使用的是Windows10的话可以开启Linux子系统使用ssh登陆：<code>ssh root@xxx.xxx.xxx.xxx</code>然后输入密码回车即可。<br>如果你使用的是macOS，同样可以开启终端使用ssh登陆，指令同上。<br>如果登陆成功，命令行前面应该变成root@xxxx等类似的样子。第一次登陆，输入<code>passwd</code>修改登陆密码，注意，Linux系统输入密码是不会回显任何字符的，你只需要输入回车即可，成功的话会有提示的。<br>接下来，我们正式进入ss服务的搭建。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">apt-get install python-pip</div><div class="line">pip install shadowsocks</div></pre></td></tr></table></figure></p>
+<p>这样ss服务器已经安装在我们的vps上，接下来我们需要进行一些配置。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">vi /etc/shadowsocks.json</div></pre></td></tr></table></figure></p>
+<p>进行配置文件的填写。不知为何在digitalocean的vps上vim与vi的命令相同，使用vi可以稍微百度下看看如何使用，如果完全不出错的话可以按下面命令执行。“#”后面的注释不写。<br>按<code>i</code>进入vi编辑模式<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;server&quot;:&quot;服务器ip&quot;,               #我们的服务器ip，假设为1.2.3.4</div><div class="line">    &quot;server_port&quot;:端口,                #端口号可以自定义，比如4567</div><div class="line">    &quot;local_address&quot;:&quot;127.0.0.1&quot;,</div><div class="line">    &quot;local_port&quot;:1080,</div><div class="line">    &quot;password&quot;:&quot;连接密码&quot;,</div><div class="line">    &quot;timeout&quot;:300,</div><div class="line">    &quot;method&quot;:&quot;aes-256-cfb&quot;,</div><div class="line">    &quot;fast_open&quot;:false                 #其余均可保持不变</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>按<code>esc</code>退出编辑，<code>:wq</code>保存退出。</p>
-<h1 id="第三步，使用ss"><a href="#第三步，使用ss" class="headerlink" title="第三步，使用ss"></a>第三步，使用ss</h1><p>输入<code>ssserver -c /etc/shadowsocks.json</code>进行测试，应该就可以正常使用了。<br>后台运行，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ssserver -c /etc/shadowsocks.json -d start</div><div class="line">ssserver -c /etc/shadowsocks.json -d stop</div></pre></td></tr></table></figure></p>
+<h1 id="第三步，使用ss"><a href="#第三步，使用ss" class="headerlink" title="第三步，使用ss"></a>第三步，使用ss</h1><p>输入<code>ssserver -c /etc/shadowsocks.json</code>进行测试，应该就可以正常使用了。<br>后台运行，输入<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ssserver -c /etc/shadowsocks.json -d start</div><div class="line">ssserver -c /etc/shadowsocks.json -d stop</div></pre></td></tr></table></figure></p>
 <p>也可以将<code>ssserver -c /etc/shadowsocks.json -d start</code>加入<code>/etc/rc.local</code>文件中，这样vps每次重启会自动运行。</p>
 <h1 id="第四步，锐速优化tcp连接"><a href="#第四步，锐速优化tcp连接" class="headerlink" title="第四步，锐速优化tcp连接"></a>第四步，锐速优化tcp连接</h1><p>锐速安装可以参考<a href="https://github.com/91yun/serverspeeder" target="_blank" rel="external">锐速优化</a>。<br>Debian8换内核参考<a href="https://github.com/91yun/serverspeeder" target="_blank" rel="external">Debian8更换内核</a>。<br>需要说明的是，如果vps内存只有512MB的话需要对文件进行配置，文件目录为<code>/appex/etc/config</code>。<br>更多设置信息可以参考<a href="https://www.5yun.org/7700.html" target="_blank" rel="external">锐速设置</a>   </p>
 <h1 id="第五步-ss客户端"><a href="#第五步-ss客户端" class="headerlink" title="第五步 ss客户端"></a>第五步 ss客户端</h1><blockquote>
@@ -422,7 +201,7 @@
 <p><a href="github.com">github</a>下搜索<code>shadowsocks</code>可以获得更多信息。  </p>
 <h1 id="第六步-使你的ss可以代理IPv6"><a href="#第六步-使你的ss可以代理IPv6" class="headerlink" title="第六步 使你的ss可以代理IPv6"></a>第六步 使你的ss可以代理IPv6</h1><p>使ss代理ipv6有什么用呢？当然是可以在本地只有ipv4的条件下访问ipv6的网站，各种pt了什么的，当然也有的学校会对ipv6进行免流，这样就可以通过ipv6代理免费上网。<br>首先应该打开你的vps的ipv6服务，具体可以参考<a href="https://www.digitalocean.com/community/tutorials/how-to-enable-ipv6-for-digitalocean-droplets" target="_blank" rel="external">How To Enable IPv6 for DigitalOcean Droplets</a>。<br>然后需要对ss的配置进行一些更改：  </p>
 <blockquote>
-<p>将<code>&quot;server&quot;:&quot;服务器ip&quot;,               #我们的服务器ip，假设为1.2.3.4</code>里面的<code>服务器ip</code>直接改写为<code>::</code><br>另外可以开启多端口<code>port_passward</code><br>整个shadowsocks.json变成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;server&quot;:&quot;::&quot;,               </div><div class="line">    &quot;local_address&quot;:&quot;127.0.0.1&quot;,</div><div class="line">    &quot;local_port&quot;:1080,</div><div class="line">    &quot;post_password&quot;:</div><div class="line">    &#123;</div><div class="line">        &quot;5678&quot;:&quot;连接密码&quot;，</div><div class="line">        &quot;5679&quot;:&quot;连接密码&quot;</div><div class="line">    &#125;,</div><div class="line">    &quot;timeout&quot;:300,</div><div class="line">    &quot;method&quot;:&quot;aes-256-cfb&quot;,</div><div class="line">    &quot;fast_open&quot;:false,</div><div class="line">    &quot;workers&quot;:1                 #使用客户数量限制</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>将<code>&quot;server&quot;:&quot;服务器ip&quot;,               #我们的服务器ip，假设为1.2.3.4</code>里面的<code>服务器ip</code>直接改写为<code>::</code><br>另外可以开启多端口<code>port_passward</code><br>整个shadowsocks.json变成：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;server&quot;:&quot;::&quot;,               </div><div class="line">    &quot;local_address&quot;:&quot;127.0.0.1&quot;,</div><div class="line">    &quot;local_port&quot;:1080,</div><div class="line">    &quot;post_password&quot;:</div><div class="line">    &#123;</div><div class="line">        &quot;5678&quot;:&quot;连接密码&quot;，</div><div class="line">        &quot;5679&quot;:&quot;连接密码&quot;</div><div class="line">    &#125;,</div><div class="line">    &quot;timeout&quot;:300,</div><div class="line">    &quot;method&quot;:&quot;aes-256-cfb&quot;,</div><div class="line">    &quot;fast_open&quot;:false,</div><div class="line">    &quot;workers&quot;:1                 #使用客户数量限制</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
 <p>最后不要忘记在防火墙放行使用的端口。<br>重启之后在你的浏览器上测试吧，比如直接登陆<a href="ipv6.google.com">ipv6.google.com</a>。  </p>
 <h1 id="第六步-2019年的更新"><a href="#第六步-2019年的更新" class="headerlink" title="第六步 2019年的更新"></a>第六步 2019年的更新</h1><ul>
@@ -433,496 +212,305 @@
 </li>
 </ul>
 
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/web/" rel="tag"># web</a>
-          
-            <a href="/tags/vpn/" rel="tag"># vpn</a>
-          
-            <a href="/tags/ss/" rel="tag"># ss</a>
-          
-        </div>
-      
-
-      
-        
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/08/Markdown学习/" rel="next" title="Markdown学习">
-                <i class="fa fa-chevron-left"></i> Markdown学习
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/Python3基础知识/" rel="prev" title="Python3基础知识">
-                Python3基础知识 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-  </div>
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.jpg"
-               alt="Licheeee" />
-          <p class="site-author-name" itemprop="name">Licheeee</p>
-           
-              <p class="site-description motion-element" itemprop="description">licheeee.github.io</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/licheeee" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/web/">web</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/web/">web</a>
+                    
+                      <a class="hover-with-bg" href="/tags/vpn/">vpn</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ss/">ss</a>
+                    
+                  </div>
+                
+              </div>
               
-            
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/12/Python3基础知识/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Python3基础知识</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2017/08/Markdown学习/">
+                        <span class="hidden-mobile">Markdown学习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一步，购买一个国外的vps"><span class="nav-number">1.</span> <span class="nav-text">第一步，购买一个国外的vps</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二步，搭建ss服务"><span class="nav-number">2.</span> <span class="nav-text">第二步，搭建ss服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三步，使用ss"><span class="nav-number">3.</span> <span class="nav-text">第三步，使用ss</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第四步，锐速优化tcp连接"><span class="nav-number">4.</span> <span class="nav-text">第四步，锐速优化tcp连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第五步-ss客户端"><span class="nav-number">5.</span> <span class="nav-text">第五步 ss客户端</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第六步-使你的ss可以代理IPv6"><span class="nav-number">6.</span> <span class="nav-text">第六步 使你的ss可以代理IPv6</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第六步-2019年的更新"><span class="nav-number">7.</span> <span class="nav-text">第六步 2019年的更新</span></a></li></ol></div>
-            
-
           </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
+        </div>
+      </div>
     </div>
-  </aside>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
 
-
-        
       </div>
-    </main>
+    
+  </div>
+</div>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
+<!-- Custom -->
+
+
+    
+  </main>
+
   
-  &copy;  2017 - 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Licheeee</span>
-</div>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
 
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-
-        
-
-        
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
       </div>
-    
+    </div>
+  </div>
+</div>
+  
 
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
   </div>
 
-  
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
+    
 
+    
+  </div>
+</footer>
 
-
-
-
-
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
 
 
-
-  
-
-
-
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("qALtPw5lEmRREEiwrdvqJhTU-MdYXbMMI", "4CINT45vnEeWBMml2kqBBKvj");</script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
 
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
       });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
       }
     });
   </script>
 
 
 
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+<!-- Plugins -->
+
+
   
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?9134a809af131906fe168c0ae923352c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "从零开始搭建自己的vpn&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
     }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
     }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
+  </script>
 
 
-  
 
-  
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>

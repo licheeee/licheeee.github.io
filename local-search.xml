@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Python3基础知识</title>
+    <link href="/2018/12/Python3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    <url>/2018/12/Python3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Python3的数据类型"><a href="#Python3的数据类型" class="headerlink" title="Python3的数据类型"></a>Python3的数据类型</h1><p>Python3的标准数据类型有6种：</p><ul><li><p>1、数字（Number）<br>不可变数据<br>Python3支持int、float、bool和complex</p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">a, b, c, d = 20, 5.5, True, 4+3j</div></pre></td></tr></table></figure></li><li><p>2、字符串（String）<br>不可变数据<br>可以放在<code>&#39;&#39;</code>或者是<code>&quot;&quot;</code>中，同时可以使用<code>\</code>转义，前面引号外面加上<code>r</code>表示原始字符，不进行转义<br>Python3中没有字符的定义，一个字符即为只包含一个字符的字符串<br>注意Python中字符串截取中的索引：<br><code>变量[头下标:尾下标]</code><br>其中，索引以0开始，-1为末尾的位置。截取时包含头下标，不包含尾下标。</p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">str = &apos;Runoob&apos;</div><div class="line">print (str[0:-1])    # 输出第一个到倒数第二个的所有字符</div></pre></td></tr></table></figure></li><li><p>3、列表（List）<br>可变数据<br>列表写在<code>[]</code>中间，元素用<code>,</code>隔开。<br>列表中的元素的类型可以不同，支持数字、字符串、列表（嵌套）<br>在截取的方式上，列表与字符串基本相似</p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">list = [ &apos;abcd&apos;, 786 , 2.23, &apos;runoob&apos;, 70.2 ]</div><div class="line">print (list[1:3])       # 从第二个开始输出到第三个元素</div></pre></td></tr></table></figure></li><li><p>4、元组(Tuple)<br>不可变数据<br>元组写在<code>()</code>中间<br>字符串可以看作特殊的元组<br>元组中可以包含可变的元素，例如列表<br>构造包含 0 个或 1 个元素的元组比较特殊，所以有一些额外的语法规则</p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">tuple = ( &apos;abcd&apos;, 786 , 2.23, &apos;runoob&apos;, 70.2  )</div><div class="line">print (tuple[1:3])       # 从第二个开始输出到第三个元素</div><div class="line"></div><div class="line">tup1 = ()    # 空元组</div><div class="line">tup2 = (20,) # 一个元素，需要在元素后添加逗号</div></pre></td></tr></table></figure></li><li><p>5、集合(Set)<br>可变数据<br>集合可以使用<code>{}</code>或者<code>set()</code>创建，其基本功能是进行成员关系测试和删除重复元素</p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">student = &#123;&apos;Tom&apos;, &apos;Jim&apos;, &apos;Mary&apos;, &apos;Tom&apos;, &apos;Jack&apos;, &apos;Rose&apos;&#125;</div><div class="line">print(student)   # 输出集合，重复的元素被自动去掉</div><div class="line"> </div><div class="line"># 成员测试</div><div class="line">if &apos;Rose&apos; in student :</div><div class="line">    print(&apos;Rose 在集合中&apos;)</div><div class="line">else :</div><div class="line">    print(&apos;Rose 不在集合中&apos;)</div><div class="line"> </div><div class="line"> </div><div class="line"># set可以进行集合运算</div><div class="line">a = set(&apos;abracadabra&apos;)</div></pre></td></tr></table></figure></li></ul><p>创建一个空集合必须用<code>set()</code>而不是<code>{}</code>，因为<code>{}</code>是用来创建一个空字典</p><ul><li>6、字典(Dictionary)<br>可变数据<br>字典是一种映射类型，用<code>{}</code>标识，是一个无序的<code>键(key) : 值(value)</code>的集合<br>同一个字段中的<code>key</code>必须唯一且为不可变类型<br>列表是有序的对象集合，字典是无序的对象集合。两者之间的区别在于：字典当中的元素是通过键来存取的，而不是通过偏移存取<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">dict = &#123;&#125;</div><div class="line">dict[&apos;one&apos;] = &quot;1 - 菜鸟教程&quot;</div><div class="line">dict[2]     = &quot;2 - 菜鸟工具&quot;</div><div class="line"> </div><div class="line">tinydict = &#123;&apos;name&apos;: &apos;runoob&apos;,&apos;code&apos;:1, &apos;site&apos;: &apos;www.runoob.com&apos;&#125;</div><div class="line"> </div><div class="line"> </div><div class="line">print (dict[&apos;one&apos;])       # 输出键为 &apos;one&apos; 的值</div><div class="line">print (dict[2])           # 输出键为 2 的值</div><div class="line">print (tinydict)          # 输出完整的字典</div><div class="line">print (tinydict.keys())   # 输出所有键</div><div class="line">print (tinydict.values()) # 输出所有值</div></pre></td></tr></table></figure></li></ul><h1 id="Python3的运算符"><a href="#Python3的运算符" class="headerlink" title="Python3的运算符"></a>Python3的运算符</h1><ul><li>1、成员运算符 in</li><li>2、身份运算符 is</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Code</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>web</tag>
+      
+      <tag>Code</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>从零开始搭建自己的vpn</title>
+    <link href="/2017/11/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84vpn/"/>
+    <url>/2017/11/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84vpn/</url>
+    
+    <content type="html"><![CDATA[<p>从零开始搭建自己的vpn，主要是为了不需要在寻找或者购买各种自己也不确定的vpn的服务，更加稳定，也更加放心。<br>写下这个教程也是为了自己以后搭建方便。   </p><h1 id="第一步，购买一个国外的vps"><a href="#第一步，购买一个国外的vps" class="headerlink" title="第一步，购买一个国外的vps"></a>第一步，购买一个国外的vps</h1><p>第一步，需要我们购买一个国外的vps，通常价格在每月$5，也有部分服务商提供每月$2.5的vps，不过比较少，需要自己去找一找。<br>当然，如果你是一名大学生，或者拥有一个edu的邮箱，那么可以通过GitHub的学生验证获得digitalocean的$50的代金券，相当于可以免费使用10个月了。<br>在这里，以digitalocean为例，其他服务商过程应该类似。<br>从我的<a href="http://www.digitalocean.com/?refcode=6c595295013a" target="_blank" rel="external">digitalocean推广链接</a>注册，可以额外获得$10的代金券，当然我也会。在打开的页面中输入邮箱和密码，点击create an account即可。<br>在注册账号之后，需要填写一些个人信息。对于我们来说，最主要的里面有一项是需要进行付款方式的填写，有两个选择，信用卡或者PayPal，注意，储蓄卡应该是不可以的。我是申请了一张信用卡用来做国外的各种身份验证的，对于没有信用卡的同学来说可能需要注册PayPal。由于暂时我也没有注册过，暂且不表。<br>注册完成登陆之后，点击右上角自己头像–settings–billing，在里面有一项“Promo code”，将自己通过GitHub获得的代码粘贴进去，点击apply code即可。刷新就应该可以看到自己的“Your credit”编程$50，我们就可以正式开始vps的购买。<br>点击右上角绿色按钮create–Droplets，进入购买页面：</p><blockquote><p>Choose an image:我选择的是Debian 8.9 x64，如果你对其他的系统比较熟悉的话也可以选择其他的操作系统<br>Choose a size:选择第一个$5/mo的就可以了，如果需要增加需求的话可以后续添加<br>Choose a datacenter region:你可以通过<a href="http://speedtest-sfo1.digitalocean.com/" target="_blank" rel="external">测速</a>来测试到各个机房的连接速度，一般选择洛杉矶或者纽约就可以，新加坡的线路好像绕的挺远的虽然我用的就是新加坡QAQ<br>其余的选项跳过就可以，如果你自己知道需要什么的话可以自己继续添加。<br>等待系统安装完毕后，digitalocean会有一封邮件发送到你的邮箱，里面包含了root账号的密码，以及ip等信息。 </p><p>2018.1.17更新：digitalocean的套餐已经更新，5刀套餐升级内存为1GB，ssd升级为25GB。依然可以从我上面的推广链接中进入。</p></blockquote><h1 id="第二步，搭建ss服务"><a href="#第二步，搭建ss服务" class="headerlink" title="第二步，搭建ss服务"></a>第二步，搭建ss服务</h1><p>有了vps的账号密码后，就可以登陆vps命令行进行操作了。<br>如果你使用的是Windows，可以使用xshell登陆，或者如果你使用的是Windows10的话可以开启Linux子系统使用ssh登陆：<code>ssh root@xxx.xxx.xxx.xxx</code>然后输入密码回车即可。<br>如果你使用的是macOS，同样可以开启终端使用ssh登陆，指令同上。<br>如果登陆成功，命令行前面应该变成root@xxxx等类似的样子。第一次登陆，输入<code>passwd</code>修改登陆密码，注意，Linux系统输入密码是不会回显任何字符的，你只需要输入回车即可，成功的话会有提示的。<br>接下来，我们正式进入ss服务的搭建。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">apt-get install python-pip</div><div class="line">pip install shadowsocks</div></pre></td></tr></table></figure></p><p>这样ss服务器已经安装在我们的vps上，接下来我们需要进行一些配置。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">vi /etc/shadowsocks.json</div></pre></td></tr></table></figure></p><p>进行配置文件的填写。不知为何在digitalocean的vps上vim与vi的命令相同，使用vi可以稍微百度下看看如何使用，如果完全不出错的话可以按下面命令执行。“#”后面的注释不写。<br>按<code>i</code>进入vi编辑模式<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;server&quot;:&quot;服务器ip&quot;,               #我们的服务器ip，假设为1.2.3.4</div><div class="line">    &quot;server_port&quot;:端口,                #端口号可以自定义，比如4567</div><div class="line">    &quot;local_address&quot;:&quot;127.0.0.1&quot;,</div><div class="line">    &quot;local_port&quot;:1080,</div><div class="line">    &quot;password&quot;:&quot;连接密码&quot;,</div><div class="line">    &quot;timeout&quot;:300,</div><div class="line">    &quot;method&quot;:&quot;aes-256-cfb&quot;,</div><div class="line">    &quot;fast_open&quot;:false                 #其余均可保持不变</div><div class="line">&#125;</div></pre></td></tr></table></figure></p><p>按<code>esc</code>退出编辑，<code>:wq</code>保存退出。</p><h1 id="第三步，使用ss"><a href="#第三步，使用ss" class="headerlink" title="第三步，使用ss"></a>第三步，使用ss</h1><p>输入<code>ssserver -c /etc/shadowsocks.json</code>进行测试，应该就可以正常使用了。<br>后台运行，输入<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ssserver -c /etc/shadowsocks.json -d start</div><div class="line">ssserver -c /etc/shadowsocks.json -d stop</div></pre></td></tr></table></figure></p><p>也可以将<code>ssserver -c /etc/shadowsocks.json -d start</code>加入<code>/etc/rc.local</code>文件中，这样vps每次重启会自动运行。</p><h1 id="第四步，锐速优化tcp连接"><a href="#第四步，锐速优化tcp连接" class="headerlink" title="第四步，锐速优化tcp连接"></a>第四步，锐速优化tcp连接</h1><p>锐速安装可以参考<a href="https://github.com/91yun/serverspeeder" target="_blank" rel="external">锐速优化</a>。<br>Debian8换内核参考<a href="https://github.com/91yun/serverspeeder" target="_blank" rel="external">Debian8更换内核</a>。<br>需要说明的是，如果vps内存只有512MB的话需要对文件进行配置，文件目录为<code>/appex/etc/config</code>。<br>更多设置信息可以参考<a href="https://www.5yun.org/7700.html" target="_blank" rel="external">锐速设置</a>   </p><h1 id="第五步-ss客户端"><a href="#第五步-ss客户端" class="headerlink" title="第五步 ss客户端"></a>第五步 ss客户端</h1><blockquote><p>Windows可以下载<code>shadowsocks</code>客户端<br>Linux可以使用<code>shadowssocks-qt5</code>客户端<br>MacOS还没有试过<br>iOS可以搜索<code>wings</code><br>Android可以使用<code>影梭</code>  </p></blockquote><p>不想全局使用vpn的话可以使用chrome加switchyomega插件  </p><blockquote><p>switchyomega插件下选择<code>AutoProxy</code>选项，规则列表网址为<code>https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt</code>，更新即可。<br>或者直接导入<a href="https://licheeee.me/download/ss/OmegaOptions.bak" target="_blank" rel="external">我的设置</a>,或者在线导入<code>https://licheeee.me/download/ss/OmegaOptions.bak</code>  </p></blockquote><p><a href="github.com">github</a>下搜索<code>shadowsocks</code>可以获得更多信息。  </p><h1 id="第六步-使你的ss可以代理IPv6"><a href="#第六步-使你的ss可以代理IPv6" class="headerlink" title="第六步 使你的ss可以代理IPv6"></a>第六步 使你的ss可以代理IPv6</h1><p>使ss代理ipv6有什么用呢？当然是可以在本地只有ipv4的条件下访问ipv6的网站，各种pt了什么的，当然也有的学校会对ipv6进行免流，这样就可以通过ipv6代理免费上网。<br>首先应该打开你的vps的ipv6服务，具体可以参考<a href="https://www.digitalocean.com/community/tutorials/how-to-enable-ipv6-for-digitalocean-droplets" target="_blank" rel="external">How To Enable IPv6 for DigitalOcean Droplets</a>。<br>然后需要对ss的配置进行一些更改：  </p><blockquote><p>将<code>&quot;server&quot;:&quot;服务器ip&quot;,               #我们的服务器ip，假设为1.2.3.4</code>里面的<code>服务器ip</code>直接改写为<code>::</code><br>另外可以开启多端口<code>port_passward</code><br>整个shadowsocks.json变成：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;server&quot;:&quot;::&quot;,               </div><div class="line">    &quot;local_address&quot;:&quot;127.0.0.1&quot;,</div><div class="line">    &quot;local_port&quot;:1080,</div><div class="line">    &quot;post_password&quot;:</div><div class="line">    &#123;</div><div class="line">        &quot;5678&quot;:&quot;连接密码&quot;，</div><div class="line">        &quot;5679&quot;:&quot;连接密码&quot;</div><div class="line">    &#125;,</div><div class="line">    &quot;timeout&quot;:300,</div><div class="line">    &quot;method&quot;:&quot;aes-256-cfb&quot;,</div><div class="line">    &quot;fast_open&quot;:false,</div><div class="line">    &quot;workers&quot;:1                 #使用客户数量限制</div><div class="line">&#125;</div></pre></td></tr></table></figure></p></blockquote><p>最后不要忘记在防火墙放行使用的端口。<br>重启之后在你的浏览器上测试吧，比如直接登陆<a href="ipv6.google.com">ipv6.google.com</a>。  </p><h1 id="第六步-2019年的更新"><a href="#第六步-2019年的更新" class="headerlink" title="第六步 2019年的更新"></a>第六步 2019年的更新</h1><ul><li>1、使用Debian9，因为可以很方便的开启BBR，而不用在折腾锐速</li><li>2、一些参考资料<blockquote><p><a href="https://blog.csdn.net/blackfrog_unique/article/details/60320737" target="_blank" rel="external">ssserver启动报错</a><br><a href="https://www.hostloc.com/forum.php?mod=viewthread&amp;tid=456237" target="_blank" rel="external">Debian9启动BBR</a><br><a href="https://www.moerats.com/archives/623/" target="_blank" rel="external">设置开机启动</a></p></blockquote></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>web</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>web</tag>
+      
+      <tag>vpn</tag>
+      
+      <tag>ss</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Markdown学习</title>
+    <link href="/2017/08/Markdown%E5%AD%A6%E4%B9%A0/"/>
+    <url>/2017/08/Markdown%E5%AD%A6%E4%B9%A0/</url>
+    
+    <content type="html"><![CDATA[<p>第一次接触基于hexo的博客，稍微看一下Markdown的语法，以供以后写博客的时候使用。</p><ul><li>1、  <h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1>二级标题 </li></ul><hr><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><p>······  </p><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><ul><li>2、<br><strong>加粗</strong><br><em>斜体</em><br><del>删除线</del>  </li></ul><ol><li><p><code>int a</code><br>//代码段  </p><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">int a;</div><div class="line">int b;</div></pre></td></tr></table></figure></li><li><blockquote><p>这是引用  </p></blockquote></li></ol><p>5.<br><a href="http://www.lichee.studio" target="_blank" rel="external">lichee.studio</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>web</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Markdown</tag>
+      
+      <tag>web</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
